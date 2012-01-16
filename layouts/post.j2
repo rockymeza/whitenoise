@@ -17,6 +17,7 @@
     <h4>Published</h4>
     <div class="date"><span>{{ my.date | date }}</span></div>
 
+    {%- block sidebar %}{% endblock %}
     {%- if my.tags %}
     <h4>Tags</h4>
     <ul>

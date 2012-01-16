@@ -1,7 +1,7 @@
 ---
 category: blog
 title: Ouray, 2012
-date: 2012-01-12
+date: 2012-01-16
 ---
 {% extends 'layouts/post.j2' %}
 
@@ -10,13 +10,47 @@ date: 2012-01-12
 <ul class="media-grid">
 {% for image in site.static.image.ouray %}
   <li>
-    <a href="{{ image.url }}"><img class="thumbnail" width="270" src="{{ image.url }}" /></a>
-<!--       {%- if image.caption -%}
+    <a style="width:270px; height:270px;"href="{{ image.url }}">
+      {%- if image.name in ["img_0235_jpg"] -%}
+      <img style="margin-top: 30px;" class="thumbnail" width="270" src="{{ image.url }}" />
+      {%- elif image.name in ["img_0248_jpg", "img_0249_jpg", "img_0250_jpg"] -%}
+      <img style="margin-left: 30px;" class="thumbnail" height="270" src="{{ image.url }}" />
+      {%- else -%}
+      <img class="thumbnail" width="270" src="{{ image.url }}" />
+      {%- endif -%}
+    </a>
+{#
+      {%- if image.caption -%}
       <legend>{{ image.caption }}</legend>
       <div class="clearfix"></div>
       {%- endif -%}
- -->  </li>
+#}
+  </li>
 {% endfor %}
 </ul>
 
+{% endblock %}
+
+{% block sidebar %}
+{% markdown2 %}
+### Ouray
+
+My third year in Ouray.  This year was a surprise; I got a call from a guy that hitched a ride with me last year — we miraculously survived a
+fairly intense snowstorm in my 2WD Toyta Matrix with baldy-bald-bald tires — and he had extra floor space and enough gear to handle a couple
+more people.
+
+Thanks to the boss-man for letting me take the time off on such short notice.
+
+We went down a day *earlier* than usual, so we had that much more time to monkey around on the ice.  This year was the
+first that I felt that I knew what I was doing.  I handled things a loat hairier than previous years!
+
+Ice climbing has got to be one of the funnest things you can do.  You get the same emotional high as rock-climbing, but you build your own
+foot and hand holds using these high-tech axes and crampons.  You get to be a bad-ass for half the work, and twice the fun!
+
+The other person pictured here is my friend and co-worker Chris `Pr0t0`.  He came along last year, too, and was party to the oh-so-memorable
+trip through Vail Pass in a snowstorm.  It really sucked, I can't emphasize that enough.
+
+This year we took his AWD SUV.  And so, of course, the weather was fine.
+
+{% endmarkdown2 %}
 {% endblock %}
