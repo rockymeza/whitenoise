@@ -9,23 +9,8 @@
   <div class="span10">
 {% block content %}{% endblock %}
     <hr>
-    <div class="pagination">
-      <ul>
-      {% if my.prev %}
-        <li class="prev"><a href="{{ my.prev.url }}" title="{{ my.prev.title }}">&larr;</a></li>
-      {% else %}
-        <li class="prev disabled"><a>&larr;</a></li>
-      {% endif %}
-
-        <li><a href="{{ site.archive.url }}">Archive</a></li>
-
-      {% if my.next %}
-        <li class="next"><a href="{{ my.next.url }}" title="{{ my.next.title }}">&rarr;</a></li>
-      {% else %}
-        <li class="next disabled"><a>&rarr;</a>
-      {% endif %}
-      </ul>
-    </div>
+{% from 'includes/nextprev.j2' import nextprev %}
+{{  nextprev(my, site) }}
   </div>
 
   <div class="span4">
