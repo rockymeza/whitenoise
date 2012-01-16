@@ -42,7 +42,7 @@
 {% block endhead %}{% endblock endhead %}
   </head>
 
-  <body onload="prettyPrint()">
+  <body>
 
     <div class="topbar">
       <div class="fill">
@@ -75,8 +75,8 @@
       </footer>
 
     </div> <!-- /container -->
-{% block js %}
 
+{% block js %}
 {% block prettyprint -%}
 <script type="text/javascript">
 $(document).ready(prettyPrint);

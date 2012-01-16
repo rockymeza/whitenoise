@@ -1,22 +1,13 @@
----
-title: projects
-header: stuff i've coded
----
 {% extends 'layouts/base.j2' %}
 
 {% block main %}
 <div class="page-header">
-  <h1>
-    {{ page.title }}
-    {% if page.header -%}
-    <small>{{ page.header }}</small>
-    {%- endif %}
-  </h1>
+  <h1>{{ my.title }} <small>a {{ my.category }} by colinta</small></h1>
 </div>
 
 <div class="row">
   <div class="span14">
-    {% block content %}{% endblock %}
+    {%- block content %}{% endblock %}
   </div>
 </div>
 {% endblock %}

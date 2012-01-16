@@ -7,8 +7,16 @@ date: 2012-01-12
 
 {% block content %}
 
+<ul class="media-grid">
 {% for image in site.static.image.ouray %}
-<img width="200" src="{{ image.url }}" /><br />
+  <li>
+    <a href="{{ image.url }}"><img class="thumbnail" width="270" src="{{ image.url }}" /></a>
+<!--       {%- if image.caption -%}
+      <legend>{{ image.caption }}</legend>
+      <div class="clearfix"></div>
+      {%- endif -%}
+ -->  </li>
 {% endfor %}
+</ul>
 
 {% endblock %}

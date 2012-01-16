@@ -1,9 +1,9 @@
+deploy_path: "/Users/colinta/Source/GithubPages"
 host: http://colinta.com
 meta:
   analytics: 'UA-15076738-1'
   title: stuff by colinta
   header: colinta
-  # time: {{ Date() }}
   author:
     name: Colin Thomas-Arnold
     email: colinta@gmail.com

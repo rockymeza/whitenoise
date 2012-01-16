@@ -28,6 +28,16 @@ footer
   margin-top: 20px;
 }
 
+.media-grid legend
+{
+  display: block;
+  float: left;
+  margin: 0 0 18px 20px;
+  text-align: center;
+  /*width: 100%;*/
+}
+
+
 /* ============================= */
 /* ! Layout for mobile version   */
 /* ============================= */
