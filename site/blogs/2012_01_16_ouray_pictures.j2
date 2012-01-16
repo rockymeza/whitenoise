@@ -11,13 +11,20 @@ date: 2012-01-16
 {% for image in site.static.image.ouray %}
   <li>
     <a style="width:270px; height:270px;"href="{{ image.url }}">
-      {%- if image.name in ["img_0235_jpg"] -%}
-      <img style="margin-top: 30px;" class="thumbnail" width="270" src="{{ image.url }}" />
-      {%- elif image.name in ["img_0248_jpg", "img_0249_jpg", "img_0250_jpg"] -%}
-      <img style="margin-left: 30px;" class="thumbnail" height="270" src="{{ image.url }}" />
-      {%- else -%}
-      <img class="thumbnail" width="270" src="{{ image.url }}" />
-      {%- endif -%}
+{%-  if image.name in ["img_0235_jpg"]                                    -%}
+{%-    set style = "margin-top: 30px;"                                    -%}
+{%-    set width = "270"                                                  -%}
+{%-    set height = ""                                                    -%}
+{%-  elif image.name in ["img_0248_jpg", "img_0249_jpg", "img_0250_jpg"]  -%}
+{%-    set style = "margin-left: 30px;"                                   -%}
+{%-    set width = ""                                                     -%}
+{%-    set height = "270"                                                 -%}
+{%-  else                                                                 -%}
+{%-      set style = ""                                                   -%}
+{%-    set width = "270"                                                  -%}
+{%-    set height = "270"                                                 -%}
+{%-    endif                                                              -%}
+      <img style="{{ style }}" class="thumbnail" width="{{ width }}" height="{{ height }}" src="{{ image.url }}" title="{{ image.caption }}" />
     </a>
 {#
       {%- if image.caption -%}
