@@ -1,6 +1,7 @@
 import yaml
 import os
 import re
+import urllib
 from fnmatch import fnmatch
 from copy import deepcopy
 
@@ -34,10 +35,10 @@ DEFAULT_CONFIG = {
 
 
 def build_node_tree(source_path, target_path, config, parent_node):
-    # don't modify node_config
+    # don't modify parent's node_config
     node_config = deepcopy(config)
 
-    # merge folder config
+    # merge folder/config.yaml
     config_path = os.path.join(source_path, CONFIG_FILE)
     folder_config = {}
     if os.path.isfile(config_path):
@@ -63,30 +64,45 @@ def build_node_tree(source_path, target_path, config, parent_node):
 
         leaf_config = deepcopy(node_config)
 
-        # figure out source and destination paths, and target_name
+        # figure out source path and base_name, ext to help get us started on the name mangling
         path = os.path.join(source_path, file_name)
-        name, ext = os.path.splitext(file_name)
+        base_name, ext = os.path.splitext(file_name)
 
+        ##|  MERGE FILES CONFIG
+        # these use the "real" file_name
+        try:
+            if folder_config['files'] and folder_config['files'][file_name]:
+                leaf_config.update(folder_config['files'][file_name])
+        except KeyError:
+            pass
+
+        ##|  FIX EXTENSION
         # .jinja2 should be served as .html
         if 'rename_extensions' in leaf_config and ext in leaf_config['rename_extensions']:
             ext = leaf_config['rename_extensions'][ext]
 
-        # allow name override
+        ##|  ASSIGN NAME
+        # name override
         if 'name' in leaf_config:
             name = leaf_config['name']
+        else:
+            name = base_name
 
+        ##|  ASSIGN TARGET_NAME
         # allow target_name override, otherwise it is
         # `name + ext`
         if 'target_name' in leaf_config:
             target_name = leaf_config['target_name']
         else:
-            target_name = name + ext
+            target_name = base_name + ext
 
+        ##|  FIX NAME
         # modify the name: add the extension if it exists
         # and isn't ".html", and replace non-word characters with _
         if ext and ext != HTML_EXT:
             name += '_' + ext[1:]
         name = name.replace('-', '_')
+        name = name.replace(' ', '_')
         name = re.sub(r'/\W/', '_', name)
 
         target = os.path.join(target_path, target_name)
@@ -94,10 +110,15 @@ def build_node_tree(source_path, target_path, config, parent_node):
         public_path = source_path[len(SITE_PATH):]
         url = os.path.join('/' + public_path, target_name)
 
+        ##|  ASSIGN URL
         leaf_config['url'] = url
         # remove 'index.html from the end of the url'
         if leaf_config['url'].endswith(leaf_config['index']):
             leaf_config['url'] = leaf_config['url'][0:-len(leaf_config['index'])]
+        leaf_config['url'] = urllib.quote(url)
+
+        ### DEBUG
+        ### print '%s >> %s @ %s' % (name, target, leaf_config['url'])
 
         # create node(s)
         if os.path.isdir(path):
@@ -109,12 +130,6 @@ def build_node_tree(source_path, target_path, config, parent_node):
 
             build_node_tree(path, target, node_config, folder_node)
         else:
-            try:
-                if folder_config['files'] and folder_config['files'][target_name]:
-                    leaf_config.update(folder_config['files'][target_name])
-            except KeyError:
-                pass
-
             # an entire folder can be marked 'dont_process' using 'dont_process': true
             # or it can contain a list of glob patterns
             should_process = True

@@ -1,0 +1,14 @@
+---
+category: blog
+title: Ouray, 2012
+date: 2012-01-12
+---
+{% extends 'layouts/post.j2' %}
+
+{% block content %}
+
+{% for image in site.static.image.ouray %}
+<img width="200" src="{{ image.url }}" /><br />
+{% endfor %}
+
+{% endblock %}
