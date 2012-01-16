@@ -1,9 +1,10 @@
 ---
-page: index
+title: blogs
+header: stuff i've written
 ---
-{% extends "layouts/base.j2" %}
+{% extends 'layouts/header.j2' %}
 
-{% block main %}
+{% block content %}
   <h1>Blogs ({{ site.blogs | count }})</h1>
   <ol>
   {% for blog in site.blogs %}

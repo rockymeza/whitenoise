@@ -19,6 +19,7 @@ DEFAULT_CONFIG = {
     'html_extension': HTML_EXT,
     'index': 'index' + HTML_EXT,
     'rename_extensions': {
+        '.md': HTML_EXT,
         '.j2': HTML_EXT,
         '.jinja2': HTML_EXT,
     },
@@ -94,9 +95,15 @@ def build_node_tree(source_path, target_path, config, parent_node):
         url = os.path.join('/' + public_path, target_name)
 
         leaf_config['url'] = url
+        # remove 'index.html from the end of the url'
+        if leaf_config['url'].endswith(leaf_config['index']):
+            leaf_config['url'] = leaf_config['url'][0:-len(leaf_config['index'])]
 
         # create node(s)
         if os.path.isdir(path):
+            # add a trailing slash.  this gives folders the same
+            # url as their index page (assuming they have one)
+            leaf_config['url'] += '/'
             folder_node = FolderNode(name, leaf_config, target)
             parent_node.add_child(folder_node)
 

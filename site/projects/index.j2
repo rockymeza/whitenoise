@@ -1,0 +1,35 @@
+{% extends "layouts/header.j2" %}
+
+{% block main %}
+  <h1>Projects ({{ site.projects | count }})</h1>
+
+  {% for project in site.projects %}
+  <div class="row">
+    <div class="span4">
+      <p>
+        <strong>{{ project.title }}</strong><br />
+
+        <small>Started: {{ project.date | date }}</small><br />
+
+        <a class="btn verysmall" href="{{ project.url }}">view</a>
+
+        {% if project.github %}
+        <a class="btn verysmall" href="https://github.com/{{ project.github }}">github</a>
+        {% endif %}
+
+        {% if project.homepage %}
+        <a class="btn verysmall" href="{{ project.homepage }}">homepage</a>
+        {% endif %}
+      </p>
+    </div>
+
+    <div class="span10">
+      <div class="well">
+        <p>
+          {{ project.about }}
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}
