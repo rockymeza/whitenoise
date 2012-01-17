@@ -9,7 +9,10 @@ header: Sublime Text 2 Plugin
 tags:
   - Sublime Plugins
 
-about: ""
+about: >
+  Super useful.  Compare the current file or selection with the saved version, the clipboard, another tab,
+  another file, or compare two selections.
+
 github: colinta/SublimeFileDiffs
 ---
 

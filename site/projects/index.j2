@@ -32,9 +32,7 @@ header: stuff i've coded
 
     <div class="span8">
       <div class="well">
-        <p>
-          {{ project.about }}
-        </p>
+        {{ project.about | markdown2 }}
       </div>
     </div>
   </div>

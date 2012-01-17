@@ -12,6 +12,7 @@ tags:
 about: >
   Another static site generator. This one uses a tree representation of your site to keep
   the implementation simple, while offering a surprising amount of power.
+
 github: colinta/StrangeCase
 ---
 {% extends 'layouts/project.j2' %}

@@ -9,7 +9,7 @@ header: Sublime Text 2 Plugin
 tags:
   - Sublime Plugins
 
-about: ""
+about: Entitize, deentitize, urlencode, urldecode.
 github: colinta/SublimeStringEncode
 ---
 
