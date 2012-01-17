@@ -16,6 +16,11 @@
   letter-spacing: 1px;
 }
 
+pre.prettyprint
+{
+  padding-left: 30px ! important;
+}
+
 code
 {
   font-family: 'Anonymous Pro', monospace;
