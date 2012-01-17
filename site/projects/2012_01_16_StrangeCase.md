@@ -150,7 +150,7 @@ files:
 </pre>{% endraw %}
 
 `files:` is a special key in config.yaml.  It contains the YAML front matter for files that would otherwise have *no way* to specify it, like images.
-Check out (the config file)[https://raw.github.com/colinta/StrangeCase/colinta/site/static/image/2012_01_06_ouray/config.yaml] for the Ouray pictures.
+Check out [the config file](https://raw.github.com/colinta/StrangeCase/colinta/site/static/image/2012_01_06_ouray/config.yaml) for the Ouray pictures.
 The `caption:` and `target_name:` for every image is placed in there.  I don't know why I set target_name, though... I think the images were capitalized
 or called something else before.
 
@@ -188,7 +188,7 @@ And finally, the name: `StrangeCase`?  As in "The `StrangeCase` of Dr. `jekyll` 
 wants to kill a weekend writing a static site generator.  That's how long StrangeCase took to write.  That should give *some*
 indication of how simple it really is.
 
-[README](https://github.com/colinta/StrangeCase)
+<https://github.com/colinta/StrangeCase>
 
 {% endmarkdown2 %}
 {% endblock %}
