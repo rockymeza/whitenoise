@@ -115,7 +115,7 @@ So that's all it takes to iterate over a folder of assets.  How about listing th
 -------------------
 
 
-There's not much more to go over that isn't in the [README](https://colinta.github.com/StrangeCase), but here goes, since
+There's not much more to go over that isn't in the [README](https://github.com/colinta/StrangeCase), but here goes, since
 you're still here and paying attention...
 
 The only file that is special-cased is `index.html`.  This file does not appear in the listing above (there is a file there,
@@ -188,7 +188,7 @@ And finally, the name: `StrangeCase`?  As in "The `StrangeCase` of Dr. `jekyll` 
 wants to kill a weekend writing a static site generator.  That's how long StrangeCase took to write.  That should give *some*
 indication of how simple it really is.
 
-[README](https://colinta.github.com/StrangeCase)
+[README](https://github.com/colinta/StrangeCase)
 
 {% endmarkdown2 %}
 {% endblock %}
