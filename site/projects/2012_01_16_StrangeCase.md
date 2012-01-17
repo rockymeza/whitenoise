@@ -149,18 +149,20 @@ files:
   "2011_12_21_move_text": { 'name': 'move_text' }
 </pre>{% endraw %}
 
-In the future, I would like to support placing this in the YAML front matter, but *for now*, this can only be done using config.yaml.
+`files:` is a special key in config.yaml.  It contains the YAML front matter for files that would otherwise have *no way* to specify it, like images.
+Check out (the config file)[https://raw.github.com/colinta/StrangeCase/colinta/site/static/image/2012_01_06_ouray/config.yaml] for the Ouray pictures.
+The `caption:` and `target_name:` for every image is placed in there.  I don't know why I set target_name, though... I think the images were capitalized
+or called something else before.
 
-> Why?  The config.yaml file is the first thing that is read when a directory is being scanned, and so its content is available when the
-> file naming/renaming is going on.  The front matter is read *during template rendering*, long after the site tree has been built (and
-> so the other pages will not know how to refer to that page).  It will not be too difficult, though, to have the page-name-lookup happen
-> *at runtime* instead of during tree building.
+This trick could just as easily be done in the YAML front matter, and in this case that is where I will put it.  As far as I know, there is no difference
+between using the config.yaml `files:` and placing things in front matter.
 
-I figured I should go ahead and show what the YAML front matter looks like.  It's no different from jekyll or hyde.
+Here is what the YAML front matter looks like.  Really it's no different from jekyll or hyde, so no surprises here.
 
 {% raw %}<pre class="prettyprint">
 ---
 category: project
+name: move_text
 
 title: MoveText
 date: 2011-12-21
@@ -176,8 +178,11 @@ github: colinta/SublimeMoveText
 …
 </pre>{% endraw %}
 
-So i guess I should fess up and point out that there *are* a few special variables that can go in `config.yaml` that change
+You have no doubt noticed that there *are* a few special variables that can go in `config.yaml` that change
 things like variables names and deploy locations.  But I promise I kept them to a minimum.  Or tried to, at least.
+
+* `name`: the name you use to reference this page from other pages
+* `target_name`: the file name to use after the file is copied or rendered
 
 And finally, the name: `StrangeCase`?  As in "The `StrangeCase` of Dr. `jekyll` and Mr. `hyde`".  Which leaves `the-of-and` if someone
 wants to kill a weekend writing a static site generator.  That's how long StrangeCase took to write.  That should give *some*
