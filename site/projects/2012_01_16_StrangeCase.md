@@ -51,7 +51,7 @@ To get a taste of what I mean by "simple config", here is the `config.yaml` that
 deploy_path: "../githubpages"
 host: http://colinta.com
 meta:
-  analytics: 'UA-********-1'
+  analytics: 'UA-15076738-1'
   title: stuff by colinta
   header: colinta
   author:
