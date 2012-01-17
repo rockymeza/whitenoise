@@ -1,6 +1,6 @@
 ---
 layout: project
-category: project
+category: sublime plugin
 
 title: MarkAndMove
 date: 2012-01-04

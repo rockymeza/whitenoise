@@ -1,6 +1,6 @@
 ---
 layout: project
-category: project
+category: sublime plugin
 
 title: ClipboardManager
 date: 2012-01-10

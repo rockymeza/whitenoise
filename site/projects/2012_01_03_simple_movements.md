@@ -1,6 +1,6 @@
 ---
 layout: project
-category: project
+category: sublime plugin
 
 title: SimpleMovements
 date: 2012-01-03

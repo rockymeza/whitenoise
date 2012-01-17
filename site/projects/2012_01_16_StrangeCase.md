@@ -1,8 +1,9 @@
 ---
 category: project
+name: strange_case
 
 title: StrangeCase
-date: 2011-12-21
+date: 2012-01-16
 header: another static site generator
 
 tags:

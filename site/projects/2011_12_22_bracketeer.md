@@ -1,6 +1,6 @@
 ---
 layout: project
-category: project
+category: sublime plugin
 
 title: Bracketeer
 date: 2011-12-22
