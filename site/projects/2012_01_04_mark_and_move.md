@@ -13,3 +13,7 @@ about: ""
 github: colinta/SublimeMarkAndMove
 ---
 
+{% extends 'layouts/project.j2' %}
+
+{% block content %}
+{% endblock %}

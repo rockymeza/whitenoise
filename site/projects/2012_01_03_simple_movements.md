@@ -12,3 +12,7 @@ tags:
 about: ""
 github: colinta/SublimeSimpleMovements
 ---
+{% extends 'layouts/project.j2' %}
+
+{% block content %}
+{% endblock %}

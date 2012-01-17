@@ -12,3 +12,7 @@ tags:
 about: ""
 github: colinta/SublimeQuickFind
 ---
+{% extends 'layouts/project.j2' %}
+
+{% block content %}
+{% endblock %}

@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{%- from 'includes/ascii.j2' import ascii -%}
+{{ ascii(now, time) }}
 <html lang="en">
   <head>
 {% block starthead %}{% endblock starthead %}
@@ -7,7 +9,7 @@
 {% block seometadata %}
     <title>{% block title %}{% if title %}{{ title }} | {% endif %}{{ meta.title }}{% endblock %}</title>
     <meta name="description" content="{{ meta.description }}">
-    <meta name="author" content="{{ meta.author }}">
+    <meta name="author" content="{{ meta.author.name }}">
 {% endblock seometadata %}
 
     <link rel="shortcut icon" href="/static/image/favicon.ico">

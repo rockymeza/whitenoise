@@ -13,3 +13,7 @@ about: ""
 github: colinta/SublimeFileDiffs
 ---
 
+{% extends 'layouts/project.j2' %}
+
+{% block content %}
+{% endblock %}

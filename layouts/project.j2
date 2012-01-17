@@ -1,13 +1,41 @@
 {% extends 'layouts/base.j2' %}
 
+{% from 'includes/forkme.j2' import forkme %}
+
 {% block main %}
+{{ forkme(meta.author.github) }}
 <div class="page-header">
   <h1>{{ my.title }} <small>a {{ my.category }} by colinta</small></h1>
 </div>
 
 <div class="row">
-  <div class="span14">
+  <div class="span2 leftcol">
+    {%- block leftcol %}
+    <p>
+      <small>
+        Started:<br />
+        {{ my.date | date }}<br />
+      </small>
+
+      {%- if my.github -%}
+      <a class="btn verysmall" href="https://github.com/{{ my.github }}">github</a>
+      {% endif -%}
+
+      {%- if my.homepage -%}
+      <a class="btn verysmall" href="{{ my.homepage }}">homepage</a>
+      {% endif -%}
+
+      {%- if my.category == 'sublime plugin' -%}
+      <img class="st2logo" width="64" height="64" src="{{ site.static.image.st2_png.url }}" />
+      {% endif -%}
+    </p>
+    {% endblock %}
+  </div>
+  <div class="span10">
     {%- block content %}{% endblock %}
+  </div>
+  <div class="span2 rightcol">
+    {%- block rightcol %}{% endblock %}
   </div>
 </div>
 {% endblock %}

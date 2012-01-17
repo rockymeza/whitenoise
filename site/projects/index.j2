@@ -4,14 +4,17 @@ header: stuff i've coded
 ---
 {% extends "layouts/header.j2" %}
 
+{% from 'includes/forkme.j2' import forkme %}
+
 {% block main %}
+  {{ forkme(meta.author.github) }}
   <h1>Projects ({{ site.projects | count }})</h1>
 
   {% for project in site.projects %}
   <div class="row">
     <div class="span4">
       <p>
-        <strong>{{ project.title }}</strong><br />
+        <strong><a href="{{ project.url }}">{{ project.title }}</a></strong><br />
 
         <small>Started: {{ project.date | date }}</small><br />
 

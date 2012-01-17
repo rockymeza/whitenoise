@@ -12,3 +12,7 @@ tags:
 about: ""
 github: colinta/SublimeClipboardManager
 ---
+{% extends 'layouts/project.j2' %}
+
+{% block content %}
+{% endblock %}

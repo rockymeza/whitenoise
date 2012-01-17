@@ -13,3 +13,7 @@ about: ""
 github: colinta/SublimeStringEncode
 ---
 
+{% extends 'layouts/project.j2' %}
+
+{% block content %}
+{% endblock %}
