@@ -23,7 +23,8 @@ pre.prettyprint
 
 code
 {
-  font-family: 'Anonymous Pro', monospace;
+  /*font-family: 'Anonymous Pro', monospace;*/
+  font-family: 'Monaco', monospace;
   background-color: #dddddd;
   border: 1px solid #333333;
 }
