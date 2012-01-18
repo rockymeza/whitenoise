@@ -1,6 +1,3 @@
-----
-processor: hidden_page
-----
 # robots.txt for Google
 User-Agent: Googlebot
 Allow: /
