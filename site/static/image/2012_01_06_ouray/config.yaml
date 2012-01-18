@@ -1,79 +1,27 @@
 files:
-  "img_0224.jpg":
-    target_name: "img_0224.jpg"
-    caption: "Walking in the ravine with my cool toys."
-  "img_0225.jpg":
-    target_name: "img_0225.jpg"
-    caption: "More of that."
-  "img_0226.jpg":
-    target_name: "img_0226.jpg"
-    caption: ""
-  "img_0227.jpg":
-    target_name: "img_0227.jpg"
-    caption: ""
-  "img_0228.jpg":
-    target_name: "img_0228.jpg"
-    caption: ""
-  "img_0229.jpg":
-    target_name: "img_0229.jpg"
-    caption: ""
-  "img_0230.jpg":
-    target_name: "img_0230.jpg"
-    caption: ""
-  "img_0231.jpg":
-    target_name: "img_0231.jpg"
-    caption: ""
-  "img_0232.jpg":
-    target_name: "img_0232.jpg"
-    caption: ""
-  "img_0233.jpg":
-    target_name: "img_0233.jpg"
-    caption: ""
-  "img_0234.jpg":
-    target_name: "img_0234.jpg"
-    caption: ""
-  "img_0235.jpg":
-    target_name: "img_0235.jpg"
-    caption: ""
-  "img_0236.jpg":
-    target_name: "img_0236.jpg"
-    caption: ""
-  "img_0237.jpg":
-    target_name: "img_0237.jpg"
-    caption: ""
-  "img_0238.jpg":
-    target_name: "img_0238.jpg"
-    caption: ""
-  "img_0239.jpg":
-    target_name: "img_0239.jpg"
-    caption: ""
-  "img_0240.jpg":
-    target_name: "img_0240.jpg"
-    caption: ""
-  "img_0241.jpg":
-    target_name: "img_0241.jpg"
-    caption: ""
-  "img_0242.jpg":
-    target_name: "img_0242.jpg"
-    caption: ""
-  "img_0243.jpg":
-    target_name: "img_0243.jpg"
-    caption: ""
-  "img_0244.jpg":
-    target_name: "img_0244.jpg"
-    caption: ""
-  "img_0245.jpg":
-    target_name: "img_0245.jpg"
-    caption: ""
-  "img_0246.jpg":
-    target_name: "img_0246.jpg"
-    caption: ""
-  "img_0248.jpg":
-    target_name: "img_0248.jpg"
-    caption: ""
-  "img_0249.jpg":
-    target_name: "img_0249.jpg"
-    caption: ""
-  "img_0250.jpg":
-    target_name: "img_0250.jpg"
-    caption: ""
+  "img_0224.jpg": { caption: "Walking in the ravine with my cool toys." }
+  "img_0225.jpg": { caption: "More of that." }
+  "img_0226.jpg": { caption: "" }
+  "img_0227.jpg": { caption: "" }
+  "img_0228.jpg": { caption: "" }
+  "img_0229.jpg": { caption: "" }
+  "img_0230.jpg": { caption: "" }
+  "img_0231.jpg": { caption: "" }
+  "img_0232.jpg": { caption: "" }
+  "img_0233.jpg": { caption: "" }
+  "img_0234.jpg": { caption: "" }
+  "img_0235.jpg": { caption: "" }
+  "img_0236.jpg": { caption: "" }
+  "img_0237.jpg": { caption: "" }
+  "img_0238.jpg": { caption: "" }
+  "img_0239.jpg": { caption: "" }
+  "img_0240.jpg": { caption: "" }
+  "img_0241.jpg": { caption: "" }
+  "img_0242.jpg": { caption: "" }
+  "img_0243.jpg": { caption: "" }
+  "img_0244.jpg": { caption: "" }
+  "img_0245.jpg": { caption: "" }
+  "img_0246.jpg": { caption: "" }
+  "img_0248.jpg": { caption: "" }
+  "img_0249.jpg": { caption: "" }
+  "img_0250.jpg": { caption: "" }
