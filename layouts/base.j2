@@ -1,93 +1,18 @@
-<!DOCTYPE html>
-{%- from 'includes/ascii.j2' import ascii -%}
-{{ ascii(now, time) }}
-<html lang="en">
-  <head>
-{% block starthead %}{% endblock starthead %}
-    <meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+<style>
+td {
+  text-align: center;
+  text-valign: center;
+  font-family: "sans serif";
+}
 
-{% block seometadata %}
-    <title>{% block title %}{% if title %}{{ title }} | {% endif %}{{ meta.title }}{% endblock %}</title>
-    <meta name="description" content="{{ meta.description }}">
-    <meta name="author" content="{{ meta.author.name }}">
-{% endblock seometadata %}
-
-    <link rel="shortcut icon" href="/static/image/favicon.ico">
-    <link rel="apple-touch-icon" href="/static/image/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/static/image/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/static/image/apple-touch-icon-114x114.png">
-
-{% block googlefonts %}
-{#
-    <link href='http://fonts.googleapis.com/css?family=Wire+One|Anonymous+Pro' rel='stylesheet' type='text/css'>
-#}
-    <link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
-{% endblock googlefonts %}
-
-{% block headcss %}
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all">
-    <link href="/static/css/colinta.css" rel="stylesheet" type="text/css" media="all">
-
-    <link href="/static/google-code-prettify/prettify.css" rel="stylesheet" type="text/css" media="all">
-{% endblock headcss %}
-
-{% block headjs %}
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-    <script src="/static/js/libs/modernizr.js"></script>
-    <script src="/static/google-code-prettify/prettify.js"></script>
-{% endblock headjs %}
-
-{% block analytics %}{% include 'includes/analytics.j2' %}{% endblock analytics %}
-
-{% block endhead %}{% endblock endhead %}
-  </head>
-
-  <body>
-
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
-{% block logo -%}
-          <img class="minime" src="/static/image/minime.png" />
-          <a class="brand" href="/">{{ meta.title }}</a>
-{%- endblock %}
-          <ul class="nav">
-{% block nav -%}
-            <li><a href="{{ site.blogs.url }}">Blogs</a></li>
-            <li><a href="{{ site.projects.url }}">Projects</a></li>
-            <li><a href="{{ site.tags.url }}">Tags</a></li>
-{%- endblock %}
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <div class="content">
-{% block main -%}
-{%- endblock main %}
-      </div>
-
-      <footer>
-        <p>&copy; {{ meta.author.name }} {{ meta.time }}</p>
-        <p>Powered by <a href="{{ site.projects.strange_case.url }}">StrangeCase</a>.</p>
-      </footer>
-
-    </div> <!-- /container -->
-
-{% block js %}
-{% block prettyprint -%}
-<script type="text/javascript">
-$(document).ready(prettyPrint);
-</script>
-{% endblock prettyprint %}
-
-{% endblock js %}
-  </body>
-</html>
+.blank {
+  font-family: 'Special Elite', cursive;
+}
+</style>
+<table style="width: 100%; height: 100%">
+  <tr><td class="blank">
+    This page intentionally left blank<br />
+    &lt;<a href="http://sopastrike.com/strike">http://sopastrike.com/strike</a>&gt;
+  </td></tr>
+</table>
