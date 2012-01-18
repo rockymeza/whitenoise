@@ -1,23 +1,11 @@
-from jinja2 import Environment
-from strange_case_jinja import YamlFrontMatterLoader, YamlFrontMatterTemplate
 import os
 from shutil import copy2
-from extensions.markdown2_extension import Markdown2Extension
-from extensions.date_extension import date
-
-
-environment = Environment(extensions=[Markdown2Extension],
-                          loader=YamlFrontMatterLoader(os.getcwd()),
-                          )
-environment.filters['date'] = date
-
-environment.template_class = YamlFrontMatterTemplate
 
 
 def check_config_first(fn):
     """
-    @property methods like title() get called instead of __getattr__().  This method helps
-    to make sure that self.config is checked before returning the default.
+    @property methods like title() get called instead of __getattr__().  This method
+    makes sure that self.config is checked before returning the default.
     """
     def ret(self):
         if fn.__name__ in self.config:
@@ -31,11 +19,12 @@ class Node(object):
     Parent class for all nodes (pages and folders)
     """
 
-    def __init__(self, config):
+    def __init__(self, config, url):
         self.config = config
+        self.url = url
         self.parent = None
 
-    def build(self, **context):
+    def generate(self, **context):
         pass
 
     ##|
@@ -99,36 +88,44 @@ class Node(object):
         return None
 
     def __repr__(self, indent=''):
-        return "%s (%s)" % (self.name, str(type(self)))
+        return "(url: %s type:%s)" % (self.url, str(type(self)))
 
 
 class FolderNode(Node):
     """
-    A FolderNode object creates itself.
+    A FolderNode object creates itself in the target folder (mkdir).
     """
-    def __init__(self, config, folder):
-        super(FolderNode, self).__init__(config)
+    def __init__(self, config, url, source, folder):
+        super(FolderNode, self).__init__(config, url)
+        self.source = source
         self.folder = folder
 
         self.children = []
 
-    def add_child(self, child):
-        if child.parent:
-            child.parent.remove_child(child)
+    def build(self, public_path):
+        pass
 
-        child.parent = self
-        self.children.append(child)
-
-    def remove_child(self, child):
-        if child in self.children:
-            self.children.remove(child)
-
-    def build(self, **context):
+    def generate(self, **context):
         if not os.path.isdir(self.folder):
             os.mkdir(self.folder, 0755)
 
         for child in self.children:
-            child.build(**context)
+            child.generate(**context)
+
+    def append(self, child):
+        if child.parent:
+            child.parent.remove(child)
+
+        child.parent = self
+        self.children.append(child)
+
+    def extend(self, children):
+        for child in children:
+            self.append(child)
+
+    def remove(self, child):
+        if child in self.children:
+            self.children.remove(child)
 
     def __getattr__(self, key):
         ret = super(FolderNode, self).__getattr__(key)
@@ -180,12 +177,13 @@ class FolderNode(Node):
         return ret
 
 
-class PageNode(Node):
+class FileNode(Node):
     """
-    A PageNode object is an abstract parent class for a "leaf".
+    A FileNode object is an abstract parent class for a "leaf".
     """
-    def __init__(self, config, target):
-        super(PageNode, self).__init__(config)
+    def __init__(self, config, url, source, target):
+        super(FileNode, self).__init__(config, url)
+        self.source = source
         self.target = target
 
     ##|
@@ -208,32 +206,42 @@ class PageNode(Node):
         return not self.is_page
 
 
-class StaticPageNode(PageNode):
+class AssetNode(FileNode):
     """
     Copies a file to a destination
     """
-    def __init__(self, config, target, path):
-        super(StaticPageNode, self).__init__(config, target)
-        self.path = path
+    def __init__(self, config, url, source, target):
+        super(AssetNode, self).__init__(config, url, source, target)
 
-    def build(self, **context):
-        copy2(self.path, self.target)
-        super(StaticPageNode, self).build(**context)
+    def generate(self, **context):
+        copy2(self.source, self.target)
+        super(AssetNode, self).generate(**context)
 
 
-class TemplatePageNode(PageNode):
+class JinjaNode(FileNode):
     """
-    A TemplatePageNode object is rendered before copied to its destination
+    A JinjaNode object is rendered before copied to its destination
     """
-    def __init__(self, config, target, path):
-        super(TemplatePageNode, self).__init__(config, target)
-        self.path = path
-        self.template = environment.get_template(path)
-        if 'url' in self.template.context:
-            raise KeyError('You cannot specify "url" in yaml front matter.  It is determined by its location in the tree, and the target_names of itself and all its parents')
-        self.config.update(self.template.context)
+    ENVIRONMENT = None
 
-    def build(self, **context):
+    @classmethod
+    def get_environment(cls):
+        if not cls.ENVIRONMENT:
+            ENVIRONMENT = None
+            try:
+                from config import ENVIRONMENT
+            except ImportError:
+                if not ENVIRONMENT:
+                    from strange_case_jinja import StrangeCaseEnvironment
+                    ENVIRONMENT = StrangeCaseEnvironment()
+            cls.ENVIRONMENT = ENVIRONMENT
+        return cls.ENVIRONMENT
+
+    def __init__(self, config, url, source, target):
+        super(JinjaNode, self).__init__(config, url, source, target)
+        self.template = self.get_environment().get_template(source)
+
+    def generate(self, **context):
         content = self.template.render(self.config, my=self, **context)
         with open(self.target, 'w') as dest:
             dest.write(content.encode('utf-8'))
