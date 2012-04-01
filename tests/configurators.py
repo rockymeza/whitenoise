@@ -1,5 +1,6 @@
 import unittest
 import os
+import datetime
 
 from whitenoise.configurators import *
 
@@ -44,5 +45,26 @@ Content
 
         assert data == {
                 'title': 'Hello'
+                }
+        assert content == 'Content'
+
+    def test_more_data(self):
+        content, data = parse_front_matter("""
+---
+title: Hello
+date: 2012-01-01
+thing: [foo, bar, baz]
+---
+Content
+        """)
+
+        assert data == {
+                'title': 'Hello',
+                'date': datetime.date(2012, 1, 1),
+                'thing': [
+                    'foo',
+                    'bar',
+                    'baz',
+                    ],
                 }
         assert content == 'Content'

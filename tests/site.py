@@ -15,11 +15,13 @@ class TestSite(unittest.TestCase):
         actual = site.build_data()
 
         should = {
-                'url': '/single_file/',
+                'url': '/',
+                'target': '',
                 }
         index = {
                 'filename': 'index.html',
-                'url': '/single_file/',
+                'url': '/',
+                'target': 'index.html',
                 }
 
         with open(os.path.join(path, 'index.html'), 'r') as f:
@@ -35,15 +37,18 @@ class TestSite(unittest.TestCase):
         actual = site.build_data()
 
         should = {
-                'url': '/flat_files/',
+                'url': '/',
+                'target': '',
                 }
         index = {
                 'filename': 'index.html',
-                'url': '/flat_files/',
+                'url': '/',
+                'target': 'index.html',
                 }
         foo = {
                 'filename': 'foo.html',
-                'url': '/flat_files/foo.html',
+                'url': '/foo.html',
+                'target': 'foo.html',
                 }
 
         with open(os.path.join(path, 'index.html'), 'r') as f:

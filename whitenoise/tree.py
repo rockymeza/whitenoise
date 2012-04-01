@@ -17,6 +17,8 @@ def build_tree(path, configurate_dir=None, configurate_file=None, parent=None):
         configurate_dir(base)
 
     for f in os.listdir(base.path):
+        if f.startswith('.'): continue
+
         current_path = os.path.join(base.path, f)
 
         if os.path.isdir(current_path):
