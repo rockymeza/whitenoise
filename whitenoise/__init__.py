@@ -1,4 +1,5 @@
 import os
+import functools
 
 from whitenoise.tree import *
 from whitenoise.configurators import *
@@ -47,19 +48,20 @@ class Site(object):
         for configurator in self.file_configurators:
             configurator(node)
 
-    def process_file(self, node):
+    def process_file(self, site_data, node):
         for processor in self.file_processors:
-            processor(node)
+            processor(site_data, node)
 
     def generate(self, destination):
         root = self.build_data()
+        partial = functools.partial(self.process_file, root)
         
         try:
             os.mkdir(destination)
         except OSError:
             pass
 
-        generate_directory(root, destination, self.process_file)
+        generate_directory(root, destination, partial)
 
 
 def generate_directory(directory, destination, process_file=None):

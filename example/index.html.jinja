@@ -2,5 +2,17 @@
 title: Title
 date: 2011-01-04
 ---
+{% extends "layouts::base.jinja" %}
+
+{% block content %}
 <title>{{ page.title }}</title>
 <p>{{ page.date|date }}</p>
+
+{% for page in site.children %}
+  <a href="{{ page.data.url }}">{{ page.data.title }}</a>
+{% endfor %}
+
+{% markdown %}
+# hip hip hooray
+{% endmarkdown %}
+{% endblock %}
